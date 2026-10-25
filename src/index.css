@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-hindi: "Noto Serif Devanagari", "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-maroon-50: #fdf2f4;
+  --color-maroon-100: #fbe3e8;
+  --color-maroon-200: #f5c2cc;
+  --color-maroon-500: #a3203f;
+  --color-maroon-600: #8a1c34;
+  --color-maroon-700: #6e1227;
+  --color-maroon-800: #4a0d1c;
+  --color-maroon-900: #2f0812;
+  --color-maroon-950: #1a0409;
+
+  --color-gold-50: #fdf9ec;
+  --color-gold-100: #faf0d2;
+  --color-gold-200: #f1dc9c;
+  --color-gold-300: #e7c86a;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c19a2e;
+  --color-gold-600: #a07d22;
+  --color-gold-700: #7d611a;
+
+  --color-ivory-50: #fffdf8;
+  --color-ivory-100: #fbf6ea;
+  --color-ivory-200: #f4ead3;
+  --color-ivory-300: #eadcbb;
+
+  --shadow-gold: 0 18px 50px -18px rgba(212, 175, 55, 0.55);
+  --shadow-card: 0 10px 30px -12px rgba(47, 8, 18, 0.25);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-up: fade-up 0.7s ease-out both;
+  --animate-shine: shine 2.8s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  @apply bg-ivory-50 text-maroon-950 antialiased;
+  font-family: var(--font-sans);
+}
+
+:lang(hi),
+.font-hindi {
+  font-family: var(--font-hindi);
+}
+
+@utility text-gold-gradient {
+  background-image: linear-gradient(100deg, #f6e27a 0%, #d4af37 35%, #fff2b3 55%, #c19a2e 75%, #e7c86a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-mandala {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.14), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.1), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23d4af37' stroke-opacity='0.08' stroke-width='1'%3E%3Ccircle cx='60' cy='60' r='40'/%3E%3Ccircle cx='60' cy='60' r='26'/%3E%3Cpath d='M60 20 L68 52 L100 60 L68 68 L60 100 L52 68 L20 60 L52 52 Z'/%3E%3Cpath d='M60 34 L66 54 L86 60 L66 66 L60 86 L54 66 L34 60 L54 54 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@utility bg-paisley-light {
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.12), transparent 35%),
+    radial-gradient(circle at 100% 100%, rgba(138, 28, 52, 0.07), transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%238a1c34' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M48 8 L56 40 L88 48 L56 56 L48 88 L40 56 L8 48 L40 40 Z'/%3E%3Ccircle cx='48' cy='48' r='6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@utility gold-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--tw-gold-border-bg, #fffdf8), var(--tw-gold-border-bg, #fffdf8)) padding-box,
+    linear-gradient(135deg, #f1dc9c, #d4af37 40%, #a07d22 70%, #f6e27a) border-box;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
